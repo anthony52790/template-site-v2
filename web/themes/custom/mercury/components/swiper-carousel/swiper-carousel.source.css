@@ -1,0 +1,49 @@
+.swiper-carousel {
+  --swiper-navigation-color: var(--hgc-color-brand, #1d4ed8);
+  --swiper-pagination-color: var(--hgc-color-brand, #1d4ed8);
+  --swiper-pagination-bullet-inactive-color: var(--hgc-color-gray, #6b7280);
+
+  box-sizing: border-box;
+  width: 100%;
+  padding-block: 0.5rem 2.5rem;
+}
+
+.swiper-carousel .swiper-wrapper {
+  align-items: stretch;
+}
+
+.swiper-carousel .swiper-slide {
+  box-sizing: border-box;
+  height: auto;
+}
+
+.swiper-carousel .swiper-button-prev,
+.swiper-carousel .swiper-button-next {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background: var(--hgc-color-body, #fff);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 15%);
+}
+
+.swiper-carousel .swiper-button-prev::after,
+.swiper-carousel .swiper-button-next::after {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.swiper-carousel .swiper-pagination {
+  bottom: 0;
+}
+
+.swiper-carousel:not(.swiper-initialized) .swiper-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swiper-carousel .swiper-wrapper {
+    transition-duration: 1ms !important;
+  }
+}

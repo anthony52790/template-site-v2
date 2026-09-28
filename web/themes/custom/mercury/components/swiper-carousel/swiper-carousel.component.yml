@@ -1,0 +1,84 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Swiper carousel
+description: Responsive carousel container powered by Swiper.
+group: Layout
+status: stable
+
+props:
+  type: object
+  required:
+    - slides_per_view
+    - slides_per_view_tablet
+    - slides_per_view_mobile
+    - space_between
+  properties:
+    slides_per_view:
+      type: integer
+      title: Slides on desktop
+      enum: [1, 2, 3, 4, 5, 6]
+      default: 3
+      examples: [3]
+    slides_per_view_tablet:
+      type: integer
+      title: Slides on tablet
+      enum: [1, 2, 3, 4]
+      default: 2
+      examples: [2]
+    slides_per_view_mobile:
+      type: integer
+      title: Slides on mobile
+      enum: [1, 2]
+      default: 1
+      examples: [1]
+    space_between:
+      type: integer
+      title: Space between slides
+      description: Gap between slides in pixels.
+      enum: [0, 8, 16, 24, 32, 48]
+      default: 24
+      examples: [24]
+    loop:
+      type: boolean
+      title: Infinite loop
+      default: false
+      examples: [false]
+    autoplay:
+      type: boolean
+      title: Autoplay
+      default: false
+      examples: [false]
+    autoplay_delay:
+      type: integer
+      title: Autoplay delay
+      description: Time between slides in milliseconds.
+      enum: [2000, 3000, 4000, 5000, 7000]
+      default: 5000
+      examples: [5000]
+    show_navigation:
+      type: boolean
+      title: Show previous and next buttons
+      default: true
+      examples: [true]
+    show_pagination:
+      type: boolean
+      title: Show pagination
+      default: true
+      examples: [true]
+    accessible_label:
+      type: string
+      title: Accessible label
+      default: Content carousel
+      examples:
+        - Featured content
+
+slots:
+  slides:
+    title: Slides
+    description: Add cards, images, or other components to the carousel.
+
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once
+  js:
+    swiper-carousel.js: { minified: true }
