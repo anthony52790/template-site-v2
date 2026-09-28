@@ -1,0 +1,54 @@
+{% set carousel_attributes = attributes|default(create_attribute()) %}
+
+<div
+  {{
+  carousel_attributes.addClass('swiper', 'swiper-carousel').setAttribute('role', 'region').setAttribute(
+    'aria-label',
+    accessible_label|default('Content carousel')
+  ).setAttribute(
+    'data-slides-desktop',
+    slides_per_view|default(3)
+  ).setAttribute(
+    'data-slides-tablet',
+    slides_per_view_tablet|default(2)
+  ).setAttribute(
+    'data-slides-mobile',
+    slides_per_view_mobile|default(1)
+  ).setAttribute(
+    'data-space-between',
+    space_between|default(24)
+  ).setAttribute(
+    'data-loop',
+    loop|default(false) ? 'true' : 'false'
+  ).setAttribute(
+    'data-autoplay',
+    autoplay|default(false) ? 'true' : 'false'
+  ).setAttribute(
+    'data-autoplay-delay',
+    autoplay_delay|default(5000)
+  ).setAttribute(
+    'data-show-navigation',
+    show_navigation|default(true) ? 'true' : 'false'
+  ).setAttribute(
+    'data-show-pagination',
+    show_pagination|default(true) ? 'true' : 'false'
+  )
+  }}
+>
+  <div class="swiper-wrapper">
+    {% block slides %}
+      <div class="swiper-slide">
+        Add components to the Slides slot.
+      </div>
+    {% endblock %}
+  </div>
+
+  {% if show_navigation %}
+    <button class="swiper-button-prev" type="button" aria-label="Previous slide"></button>
+    <button class="swiper-button-next" type="button" aria-label="Next slide"></button>
+  {% endif %}
+
+  {% if show_pagination %}
+    <div class="swiper-pagination"></div>
+  {% endif %}
+</div>
